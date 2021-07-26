@@ -78,16 +78,19 @@ h2 {
 }
 
 .container70 {
-  flex: 2;
+  flex: 5;
 }
 
 .container30 {
-  flex: 1;
+  flex: 2;
 
   height: 100%;
+  position: sticky;
+  top: 0px;
 }
 
 .container30 .cart {
+
   background-color: white;
 }
 
@@ -100,6 +103,14 @@ h2 {
   font-size: 1.2rem;
   padding: 10px;
   cursor: pointer;
+
+}
+
+.cart-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;  
+  
 }
 
 .sub-header {
@@ -153,7 +164,7 @@ h2 {
 .card {
   display: flex;
   height: 150px;
-  min-width: 360px;
+  min-width: 400px;
   flex: 1;
   flex-grow: 0;
 

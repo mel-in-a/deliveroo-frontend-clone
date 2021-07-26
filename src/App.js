@@ -66,7 +66,7 @@ function App() {
               {data.categories.map((categories) => {
                 return (
                   <> 
-                    <h2 className="my-3">{categories.name}</h2>
+                    <h2 className="my-4">{categories.name}</h2>
                     {/* cacher les catégories qui n'ont pas de meal */}
                     {console.log(categories.meals)}
                     <div className="row" >
@@ -98,7 +98,22 @@ function App() {
 
             <div className="container30">
               <div className="cart br-10 mt-5 p-2">
-                <button className="btn-cart br-10">Valider mon panier</button>
+              <button className="btn-cart br-10">Valider mon panier</button>
+                <div className="cart-container mt-3">
+                
+                    <div>1 repas à 27€</div>
+                    <div>1 repas à 27€</div>
+                    <div>1 repas à 27€</div>
+                
+                  <hr />
+              
+                    Sous total : <span className="price">27€</span> <br /> 
+                    Frais de livraison : <span className="delivery-price">2,50€ </span>
+                    <hr />
+                    Total : 124 €
+                 
+                </div>
+              
               </div>
             </div>
           </div>
