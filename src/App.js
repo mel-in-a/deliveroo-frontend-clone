@@ -42,7 +42,7 @@ function App() {
         <div className="global">
           <div className="container-fluid">
             <div className="sub-header">
-              <div className="left p-3">
+              <div className="left">
                 <h1 className="my-4">{data.restaurant.name}</h1>
                 <p>
                 {data.restaurant.description}
@@ -72,13 +72,13 @@ function App() {
                       {categories.meals.map((meal) => {
                         return (
                           
-                          <div className="card br-5 p-3" key={meal.id}>
-                            <div className="card-left">
-                              <div className="title mb-4">{meal.title}</div>
-                              <div className="description my-3">
+                          <div className="card br-5 p-3 hvr-grow-shadow" key={meal.id}>
+                            <div className="card-left p-2">
+                              <div className="title ">{meal.title}</div>
+                              <div className="description ">
                                 {meal.description.slice(0,90)} ...
                               </div>
-                              <div className="price mt-3">
+                              <div className="price ">
                                 {meal.price} € <span>{meal.popular ?? '★ Populaire'}</span>
                               </div>
                             </div>
