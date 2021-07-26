@@ -70,7 +70,7 @@ function App() {
                     <div className="row">
                       {categories.meals.map((meal) => {
                         return (
-                          <div className="card br-5 p-3 hvr-glow" key={meal.id}>
+                          <div className="card br-10 p-3 hvr-glow" key={meal.id}>
                             <div className="card-left p-2">
                               <div className="title ">{meal.title}</div>
                               <div className="description ">
@@ -89,7 +89,6 @@ function App() {
                               ) : (
                                 ""
                               )}
-                              {/* <img src={meal.picture} alt="" /> */}
                             </div>
                           </div>
                         );
@@ -108,19 +107,19 @@ function App() {
                   <div>1 repas à 27€</div>
                   <div>1 repas à 27€</div>
 
-                  <div className="hr my-2"/>
+                  <div className="hr my-2" />
                   <div className="sub-total">
                     {" "}
                     Sous total : <span className="price">27€</span>
                   </div>
-                  <div className="hr my-2"/>
+                  <div className="hr my-2" />
                   <div className="delivery-amount">
                     {" "}
                     Frais de livraison :{" "}
                     <span className="delivery-price">2,50€ </span>
                   </div>
 
-                  <div className="hr my-2"/>
+                  <div className="hr my-2" />
                   <div className="total"> Total : 124 €</div>
                 </div>
               </div>
