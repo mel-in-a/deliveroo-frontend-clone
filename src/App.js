@@ -14,7 +14,7 @@ library.add(faSpaceShuttle);
 function App() {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
-  const [clicked, setClicked] = useState(true);
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -34,6 +34,7 @@ function App() {
     // ce qui va se passer quand le composant est démonté
   }, []);
 
+  console.log(data);
   return (
     <div>
       <Header />
