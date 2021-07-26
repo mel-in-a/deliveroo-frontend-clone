@@ -14,6 +14,7 @@ library.add(faSpaceShuttle);
 function App() {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  // const [cart, setCart] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -72,7 +73,7 @@ function App() {
                       {categories.meals.map((meal) => {
                         return (
                           
-                          <div className="card br-5 p-3 hvr-grow-shadow" key={meal.id}>
+                          <div className="card br-5 p-3 hvr-glow" key={meal.id}>
                             <div className="card-left p-2">
                               <div className="title ">{meal.title}</div>
                               <div className="description ">

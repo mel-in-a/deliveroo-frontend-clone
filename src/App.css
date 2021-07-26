@@ -144,18 +144,19 @@ h2 {
 .row {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 30px;
+  /* align-items: center; */
+
+  /* justify-content: space-evenly; */
+  gap: 20px;
 }
 
 .card {
   display: flex;
   height: 150px;
-  min-width: 370px;
+  min-width: 360px;
   flex: 1;
   flex-grow: 0;
-  
+
   background-color: white;
   justify-content: space-between;
   /* max-width: 100%; */
@@ -224,5 +225,5 @@ h2 {
   }
   .sub-header .left {
     padding: 20px;
-}
+  }
 }
