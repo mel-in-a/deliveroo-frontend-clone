@@ -52,8 +52,13 @@ h2 {
   align-items: center;
   justify-content: flex-start;
   height: 80px;
-  border-bottom: 1px solid #5c48d3;
+  border-bottom: 1px solid var(--color-green);
   background-color: white;
+}
+
+.header .inner {
+  width: 1280px;
+  margin: 0 auto;
 }
 .header .logo {
   margin: 0 30px;
@@ -62,7 +67,7 @@ h2 {
 
 .header .logo img {
   height: 80px;
-  margin-left: 20rem;
+
 }
 .header .title {
   font-size: 30px;
@@ -166,10 +171,6 @@ h2 {
   flex-direction: column;
   flex:1;
   height: 100%;
-
- 
-
- 
 
 
 }

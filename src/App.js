@@ -64,15 +64,15 @@ function App() {
               {/* meals : id, title, description, price, picture, popular */}
               {data.categories.map((categories) => {
                 return (
-                  <>
+                  <> 
                     <h2 className="my-3">{categories.name}</h2>
                     {/* cacher les catégories qui n'ont pas de meal */}
-               
-                    <div className="row">
+                    {console.log(categories.meals)}
+                    <div className="row" >
                       {categories.meals.map((meal) => {
                         return (
                           
-                          <div className="card br-5 p-3">
+                          <div className="card br-5 p-3" key={meal.id}>
                             <div className="card-left">
                               <div className="title mb-4">{meal.title}</div>
                               <div className="description my-3">
