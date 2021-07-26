@@ -70,7 +70,10 @@ function App() {
                     <div className="row">
                       {categories.meals.map((meal) => {
                         return (
-                          <div className="card br-10 p-3 hvr-glow" key={meal.id}>
+                          <div
+                            className="card br-10 p-3 hvr-glow"
+                            key={meal.id}
+                          >
                             <div className="card-left p-2">
                               <div className="title ">{meal.title}</div>
                               <div className="description ">
@@ -103,24 +106,32 @@ function App() {
               <div className="cart br-10 mt-5 p-2">
                 <button className="btn-cart br-10">Valider mon panier</button>
                 <div className="cart-container mt-3 p-3">
-                  <div><button>-</button> 2 <button>+</button > repas à 27€</div>
-                  <div><button>-</button> 2 <button>+</button > repas à 27€</div>
-                  <div><button>-</button> 2 <button>+</button > repas à 27€</div>
+                  <div>
+                    <button>-</button> 2 <button>+</button> repas à 27€
+                  </div>
+                  <div>
+                    <button>-</button> 2 <button>+</button> repas à 27€
+                  </div>
+                  <div>
+                    <button>-</button> 2 <button>+</button> repas à 27€
+                  </div>
 
                   <div className="hr my-2" />
                   <div className="sub-total">
-                    {" "}
-                    Sous total : <span className="price">27€</span>
+                <div className=""> Sous total : </div>
+                   <div className="price">27€</div>
                   </div>
                   <div className="hr my-2" />
                   <div className="delivery-amount">
-                    {" "}
-                    Frais de livraison :{" "}
-                    <span className="delivery-price">2,50€ </span>
+                    <div className=""> Frais de livraison</div>
+                    <div className="delivery-price">2,50€ </div>
                   </div>
 
                   <div className="hr my-2" />
-                  <div className="total"> Total : 124 €</div>
+                  <div className="total">
+                    <div className="">Total </div>
+                    <div className="">124 €</div>
+                  </div>
                 </div>
               </div>
             </div>

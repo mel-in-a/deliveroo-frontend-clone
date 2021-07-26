@@ -124,9 +124,30 @@ h2 {
 
   border: var(--color-green) 2px solid;
   color: var(--color-green);
-  font-weight: 800;
+  font-weight: bold;
   font-size: 1rem;
 }
+
+.cart-container .total {
+  font-size: 1.2rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+}
+
+.cart-container .delivery-amount {
+  font-size: 1rem;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.cart-container .sub-total {
+  font-size: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
 .sub-header {
   min-height: 250px;
   max-width: 1200px;
