@@ -45,13 +45,11 @@ function App() {
             <div className="sub-header">
               <div className="left">
                 <h1 className="my-4">{data.restaurant.name}</h1>
-                <p>
-                {data.restaurant.description}
-                </p>
+                <p>{data.restaurant.description}</p>
               </div>
               <div className="right p-3">
                 <div className="">
-                  <img src=  {data.restaurant.picture} alt="" />
+                  <img src={data.restaurant.picture} alt="" />
                 </div>
               </div>
             </div>
@@ -65,26 +63,32 @@ function App() {
               {/* meals : id, title, description, price, picture, popular */}
               {data.categories.map((categories) => {
                 return (
-                  <> 
+                  <>
                     <h2 className="my-4">{categories.name}</h2>
                     {/* cacher les catégories qui n'ont pas de meal */}
                     {console.log(categories.meals)}
-                    <div className="row" >
+                    <div className="row">
                       {categories.meals.map((meal) => {
                         return (
-                          
                           <div className="card br-5 p-3 hvr-glow" key={meal.id}>
                             <div className="card-left p-2">
                               <div className="title ">{meal.title}</div>
                               <div className="description ">
-                                {meal.description.slice(0,90)} ...
+                                {meal.description
+                                  ? meal.description.slice(0, 90) + " ..."
+                                  : ""}
                               </div>
                               <div className="price ">
-                                {meal.price} € <span>{meal.popular ?? '★ Populaire'}</span>
+                                {meal.price} €{" "}
+                                <span>{meal.popular ?? "★ Populaire"}</span>
                               </div>
                             </div>
                             <div className="card-right p-1">
-                              {meal.picture ? <img src={meal.picture} alt=""  /> :''}
+                              {meal.picture ? (
+                                <img src={meal.picture} alt="" />
+                              ) : (
+                                ""
+                              )}
                               {/* <img src={meal.picture} alt="" /> */}
                             </div>
                           </div>
@@ -98,22 +102,27 @@ function App() {
 
             <div className="container30">
               <div className="cart br-10 mt-5 p-2">
-              <button className="btn-cart br-10">Valider mon panier</button>
-                <div className="cart-container mt-3">
-                
-                    <div>1 repas à 27€</div>
-                    <div>1 repas à 27€</div>
-                    <div>1 repas à 27€</div>
-                
-                  <hr />
-              
-                    Sous total : <span className="price">27€</span> <br /> 
-                    Frais de livraison : <span className="delivery-price">2,50€ </span>
-                    <hr />
-                    Total : 124 €
-                 
+                <button className="btn-cart br-10">Valider mon panier</button>
+                <div className="cart-container mt-3 p-3">
+                  <div>1 repas à 27€</div>
+                  <div>1 repas à 27€</div>
+                  <div>1 repas à 27€</div>
+
+                  <div className="hr my-2"/>
+                  <div className="sub-total">
+                    {" "}
+                    Sous total : <span className="price">27€</span>
+                  </div>
+                  <div className="hr my-2"/>
+                  <div className="delivery-amount">
+                    {" "}
+                    Frais de livraison :{" "}
+                    <span className="delivery-price">2,50€ </span>
+                  </div>
+
+                  <div className="hr my-2"/>
+                  <div className="total"> Total : 124 €</div>
                 </div>
-              
               </div>
             </div>
           </div>

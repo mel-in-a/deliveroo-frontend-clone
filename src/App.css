@@ -25,6 +25,11 @@
   border-radius: 20px;
 }
 
+.hr {
+border-bottom: 1px var(--color-light-grey) solid !important;
+  }
+
+
 body {
   position: relative;
   min-height: 100vh;
@@ -83,10 +88,10 @@ h2 {
 
 .container30 {
   flex: 2;
-
+  min-width: 250px;
   height: 100%;
   position: sticky;
-  top: 0px;
+  top: -20px;
 }
 
 .container30 .cart {
@@ -110,7 +115,7 @@ h2 {
   display: flex;
   flex-direction: column;
   gap: 10px;  
-  
+
 }
 
 .sub-header {
