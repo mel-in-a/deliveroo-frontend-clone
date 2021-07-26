@@ -103,9 +103,9 @@ function App() {
               <div className="cart br-10 mt-5 p-2">
                 <button className="btn-cart br-10">Valider mon panier</button>
                 <div className="cart-container mt-3 p-3">
-                  <div>1 repas à 27€</div>
-                  <div>1 repas à 27€</div>
-                  <div>1 repas à 27€</div>
+                  <div><button>-</button> 2 <button>+</button > repas à 27€</div>
+                  <div><button>-</button> 2 <button>+</button > repas à 27€</div>
+                  <div><button>-</button> 2 <button>+</button > repas à 27€</div>
 
                   <div className="hr my-2" />
                   <div className="sub-total">
