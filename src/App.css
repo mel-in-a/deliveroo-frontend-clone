@@ -50,6 +50,7 @@ h2 {
 .header {
   display: flex;
   align-items: center;
+  justify-content: flex-start;
   height: 80px;
   border-bottom: 1px solid #5c48d3;
   background-color: white;
@@ -57,6 +58,11 @@ h2 {
 .header .logo {
   margin: 0 30px;
   color: #5c48d3;
+}
+
+.header .logo img {
+  height: 80px;
+  margin-left: 20rem;
 }
 .header .title {
   font-size: 30px;
@@ -144,10 +150,12 @@ h2 {
 
 .card {
   display: flex;
-  flex-direction: row;
-  min-height: 150px;
+  height: 150px;
+  min-width:370px;
   flex:1;
+  flex-grow: 0;
   background-color: white;
+  justify-content: space-evenly;
   /* max-width: 100%; */
 
 }
@@ -158,17 +166,16 @@ h2 {
   flex-direction: column;
   flex:1;
   height: 100%;
-  flex-wrap: wrap;
-  /* flex: 2; */
-  background-color: blue;
-  justify-content: space-between;
+
+ 
+
  
 
 
 }
 
 .card-right {
-  /* flex: 1; */
+  flex: 1;
   flex-shrink: 0;
   /* background-color: yellow; */
   background-size: contain;
@@ -180,8 +187,9 @@ h2 {
   width: 150px;
   height: 100%;
   margin: auto;
-
+  border: none;
   border-radius: 5px;
+  text-align: right;
 
 }
 
@@ -197,6 +205,11 @@ h2 {
   color:darkslategrey;
 }
 
+.card span {
+  color: var(--color-orange);
+  font-weight: bold;
+  font-size:0.8rem;
+}
 /* FOOTER */
 .footer {
   position: absolute;

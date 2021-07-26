@@ -1,9 +1,9 @@
 import "./App.css";
 import "./Margin-padding-bootstrap.css";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
 import axios from "axios";
 import { useState, useEffect } from "react"; // HOOKS
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 // font awesome example
 // link : https://apollo.lereacteur.io/course/5f3e73f7ac3b9c0017f4e8d6/60c87cc1b8f3860017db4a3f
@@ -12,9 +12,8 @@ import { faSpaceShuttle } from "@fortawesome/free-solid-svg-icons";
 library.add(faSpaceShuttle);
 
 function App() {
-  const [data, setData] = useState();
+  const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-
 
   useEffect(() => {
     const fetchData = async () => {
@@ -34,68 +33,76 @@ function App() {
     // ce qui va se passer quand le composant est démonté
   }, []);
 
-  console.log(data);
   return (
     <div>
       <Header />
-
-      <div className="container-fluid">
-        <div className="sub-header">
-          <div className="left p-3">
-            <h1 className="my-4">Le pain quotidien - Montorgueil</h1>
-            <p>
-              Profitez de chaque plaisir de la vie quotidienne. Le Pain
-              Quotidien propose des ingrédients simples et sains, du bon pain,
-              des fruits et des légumes frais et de saison issus de
-              l’agriculture biologique.
-            </p>
+      {isLoading ? (
+        <div>Loading...</div>
+      ) : (
+        <div className="global">
+          <div className="container-fluid">
+            <div className="sub-header">
+              <div className="left p-3">
+                <h1 className="my-4">{data.restaurant.name}</h1>
+                <p>
+                {data.restaurant.description}
+                </p>
+              </div>
+              <div className="right p-3">
+                <div className="">
+                  <img src=  {data.restaurant.picture} alt="" />
+                </div>
+              </div>
+            </div>
           </div>
-          <div className="right p-3">
-            <div className="">
-              <img src="/img/header-image.jpg" alt="" />
+
+          <div className="container">
+            <div className="container70 p-2">
+              {/* loop category from here */}
+
+              {/* categories.name.meals */}
+              {/* meals : id, title, description, price, picture, popular */}
+              {data.categories.map((categories) => {
+                return (
+                  <>
+                    <h2 className="my-3">{categories.name}</h2>
+                    {/* cacher les catégories qui n'ont pas de meal */}
+               
+                    <div className="row">
+                      {categories.meals.map((meal) => {
+                        return (
+                          
+                          <div className="card br-5 p-3">
+                            <div className="card-left">
+                              <div className="title mb-4">{meal.title}</div>
+                              <div className="description my-3">
+                                {meal.description.slice(0,90)} ...
+                              </div>
+                              <div className="price mt-3">
+                                {meal.price} € <span>{meal.popular ?? '★ Populaire'}</span>
+                              </div>
+                            </div>
+                            <div className="card-right p-1">
+                              {meal.picture ? <img src={meal.picture} alt=""  /> :''}
+                              {/* <img src={meal.picture} alt="" /> */}
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </>
+                );
+              })}
+            </div>
+
+            <div className="container30">
+              <div className="cart br-10 mt-5 p-2">
+                <button className="btn-cart br-10">Valider mon panier</button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-
-      <div className="container">
-        <div className="container70 p-2">
-          {/* loop category from here */}
-          {isLoading ? <div>Loading...</div> : <div>Hello world!</div>}
-
-          {/* categories.name.meals */}
-          {/* meals : id, title, description, price, picture, popular */}
-          {data.map((datas) => {
-            return <h2 className="my-3">{datas.categories}</h2>;
-          })}
-
-          <div className="row">
-            {/* TODO loop cards from here */}
-            <div className="card br-5 p-3">
-              <div className="card-left">
-                <div className="title mb-4">Brunch authentique 1 personne</div>
-                <div className="description my-3">
-                  Assiette de jambon cuit, jambon fumeì, terrine, comté bio &
-                </div>
-                <div className="price mt-5">
-                  25,00 € <span>xxx</span>
-                </div>
-              </div>
-              <div className="card-right p-1">
-                <img src="/img/item-image.jpg" alt="" />
-              </div>
-            </div>
-            {/* end loop */}
-          </div>
-        </div>
-
-        <div className="container30">
-          <div className="cart br-10 mt-5 p-2">
-            <button className="btn-cart br-10">Valider mon panier</button>
-          </div>
-        </div>
-      </div>
-
+      )}
       <Footer />
     </div>
   );
