@@ -121,7 +121,7 @@ h2 {
 .cart-container button {
   padding: 0 5px;
   border-radius: 50%;
-
+background-color: white;
   border: var(--color-green) 2px solid;
   color: var(--color-green);
   font-weight: bold;
@@ -265,11 +265,15 @@ h2 {
   font-size: 12px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 960px) {
   .sub-header {
     flex-direction: column;
   }
   .sub-header .left {
     padding: 20px;
+  }
+
+  .card {
+    flex-grow: 1;
   }
 }

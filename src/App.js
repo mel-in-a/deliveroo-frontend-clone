@@ -71,7 +71,7 @@ function App() {
                       {categories.meals.map((meal) => {
                         return (
                           <div
-                            className="card br-10 p-3 hvr-glow"
+                            className="card br-10 p-3 hvr-shadow-radial"
                             key={meal.id}
                           >
                             <div className="card-left p-2">
@@ -118,7 +118,7 @@ function App() {
 
                   <div className="hr my-2" />
                   <div className="sub-total">
-                <div className=""> Sous total : </div>
+                <div className=""> Sous total</div>
                    <div className="price">27€</div>
                   </div>
                   <div className="hr my-2" />
