@@ -146,35 +146,31 @@ function App() {
 
             <div className="container30">
               <div className="cart br-10 mt-5 p-2">
-                <button className="btn-cart br-10 hvr-glow">
+                <button className="btn-cart br-10 hvr-glow ">
                   Valider mon panier
                 </button>
                 <div className="cart-container mt-3 p-2">
                   {/* <div> */}
-                
-                      {cart.map((item, index) => {
-                        return (
-                          <div className="cart-item" key={index}>
-                            {item.quantity > 0 && ( // si la quantité est supérieur à 0
-                              <>
-                                <button onClick={() => removeMeal(item)}>
-                                  -
-                                </button>
-                                <span> {item.quantity} </span>
-                                <button onClick={() => addMeal(item)}>
-                                  +
-                                </button>{" "}
-                                <span>  {item.title}  </span>
-                              <div className="ml-2 bold sub-total-meal">{(item.price * item.quantity).toFixed(2)} €</div>
 
-                       
-                              </>
-                            )}
-                          </div>
-                        );
-                      })}
-                  
-           
+                  {cart.map((item, index) => {
+                    return (
+                      <div className="cart-item" key={index}>
+                        {item.quantity > 0 && ( // si la quantité est supérieur à 0
+                          <>
+                            <button onClick={() => removeMeal(item)}>-</button>
+                            <span> {item.quantity} </span>
+                            <button onClick={() => addMeal(item)}>
+                              +
+                            </button>{" "}
+                            <span> {item.title} </span>
+                            <div className="ml-2 bold sub-total-meal">
+                              {(item.price * item.quantity).toFixed(2)} €
+                            </div>
+                          </>
+                        )}
+                      </div>
+                    );
+                  })}
 
                   <div className="hr my-2" />
                   <div className="sub-total">
