@@ -16,10 +16,13 @@ function App() {
   const [cart, setCart] = useState([]); // éléments dans le panier
   const [subTotal, setSubTotal] = useState(0); // sous total du panier
   const [total, setTotal] = useState(0); // total du panier
+  const [deliveryPrice, setDeliveryPrice] = useState(2.5); // prix de livraison
   const [isLoading, setIsLoading] = useState(true);
   // console.log(cart);
-console.log("subtotal:" + subTotal);
+  console.log("subtotal:" + subTotal);
+
   useEffect(() => {
+    // permet d'executer une seule fois le code au démarrage de l'app
     const fetchData = async () => {
       try {
         const response = await axios.get(
@@ -36,6 +39,32 @@ console.log("subtotal:" + subTotal);
     // return;
     // ce qui va se passer quand le composant est démonté
   }, []);
+
+  const addMeal = (meal) => {
+    //  check if key exists use find function
+
+    const newCart = [...cart];
+    const mealExists = newCart.find((item) => item.id === meal.id);
+    if (mealExists) {
+ 
+      // const qty = mealExists.quantity += 1;
+ 
+   
+    } else {
+      newCart.push({ ...meal, quantity: 1 });
+      setSubTotal(subTotal + Number(meal.price));
+      // console.log("typ of subtotal:" + typeof subTotal);
+      setCart(newCart);
+    }
+  };
+
+  // const removeMeal {
+  //   const newCart = [...cart];
+  //   newCart.push( { ...meal, quantity: 1 });
+  //   setSubTotal(subTotal + Number(meal.price));
+  //   // console.log("typ of subtotal:" + typeof subTotal);
+  //   setCart(newCart);
+  // }
 
   return (
     <div>
@@ -78,11 +107,7 @@ console.log("subtotal:" + subTotal);
                               className="card br-10 p-3 hvr-shadow-radial"
                               key={meal.id}
                               onClick={() => {
-                                const newCart = [...cart];
-                                newCart.push([meal.id, meal.title, meal.price]);
-                                setSubTotal(subTotal + Number(meal.price));
-                                // console.log("typ of subtotal:" + typeof subTotal);
-                                setCart(newCart);
+                                addMeal(meal);
                               }}
                             >
                               <div className="card-left p-2">
@@ -121,36 +146,36 @@ console.log("subtotal:" + subTotal);
                 </button>
                 <div className="cart-container mt-3 p-3">
                   {/* <div> */}
-                  
-                    {cart.map((item, index) => {
-                      return (
-                        <div className="cart-item" key={index}>
-                      
-                           <button>-</button>
-                           <span> 1 </span>
-                           <button>+</button>
-                          {" "}
-                          {item[1]} {item[2]} 
-                        </div>
-                      );
-                    })}
-              
+
+                  {cart.map((item, index) => {
+                    return (
+                      <div className="cart-item" key={index}>
+                        {/* onClick update the quantity on the subtotal items */}
+                        <button>-</button>
+                        <span> {item.quantity} </span>
+                        <button onClick={() => addMeal(item.id)}>+</button>{" "}
+                        {item.title} {item.price}
+                      </div>
+                    );
+                  })}
 
                   <div className="hr my-2" />
                   <div className="sub-total">
                     <div className=""> Sous total</div>
-                    <div className="price">{subTotal ? subTotal.toPrecision(4) + "€" : ''}</div>
+                    <div className="price">
+                      {subTotal ? subTotal + "€" : ""}
+                    </div>
                   </div>
                   <div className="hr my-2" />
                   <div className="delivery-amount">
                     <div className=""> Frais de livraison</div>
-                    <div className="delivery-price">2,50€ </div>
+                    <div className="delivery-price">2.50€ </div>
                   </div>
 
                   <div className="hr my-2" />
                   <div className="total">
                     <div className="">Total </div>
-                    <div className="">124 €</div>
+                    <div className="">{subTotal + deliveryPrice} € </div>
                   </div>
                 </div>
               </div>
