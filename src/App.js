@@ -44,7 +44,6 @@ function App() {
     const newCart = [...cart];
     const mealExists = newCart.find((item) => item.id === meal.id);
     if (mealExists) {
-    
       mealExists.quantity++;
       setSubTotal(subTotal + Number(meal.price));
       setCart(newCart);
@@ -61,7 +60,6 @@ function App() {
     const newCart = [...cart];
     const mealExists = newCart.find((item) => item.id === meal.id);
     if (mealExists) {
- 
       mealExists.quantity--;
       setSubTotal(subTotal - Number(meal.price));
       setCart(newCart);
@@ -153,30 +151,36 @@ function App() {
                 </button>
                 <div className="cart-container mt-3 p-2">
                   {/* <div> */}
+                
+                      {cart.map((item, index) => {
+                        return (
+                          <div className="cart-item" key={index}>
+                            {item.quantity > 0 && ( // si la quantité est supérieur à 0
+                              <>
+                                <button onClick={() => removeMeal(item)}>
+                                  -
+                                </button>
+                                <span> {item.quantity} </span>
+                                <button onClick={() => addMeal(item)}>
+                                  +
+                                </button>{" "}
+                                <span>  {item.title}  </span>
+                              <div className="ml-2 bold sub-total-meal">{(item.price * item.quantity).toFixed(2)} €</div>
 
-                  {cart.map((item, index) => {
-                    return (
-                      <div className="cart-item" key={index}>
-                        {item.quantity > 0 && ( // si la quantité est supérieur à 0
-                          <>
-                            <button onClick={() => removeMeal(item)}>-</button>
-                            <span> {item.quantity} </span>
-                            <button onClick={() => addMeal(item)}>
-                              +
-                            </button>{" "}
-                            {item.title}{" "}
-                            {(item.price * item.quantity).toPrecision(4)} €
-                          </>
-                        )}
-                      </div>
-                    );
-                  })}
+                       
+                              </>
+                            )}
+                          </div>
+                        );
+                      })}
+                  
+           
 
                   <div className="hr my-2" />
                   <div className="sub-total">
                     <div className=""> Sous total</div>
                     <div className="price">
-                      {subTotal ? subTotal.toPrecision(4) + "€" : ""}
+                      {subTotal ? subTotal.toFixed(2) + "€" : ""}
                     </div>
                   </div>
                   <div className="hr my-2" />
@@ -189,7 +193,7 @@ function App() {
                   <div className="total">
                     <div className="">Total </div>
                     <div className="">
-                      {(subTotal + deliveryPrice).toPrecision(4)} €{" "}
+                      {(subTotal + deliveryPrice).toFixed(2)} €{" "}
                     </div>
                   </div>
                 </div>
