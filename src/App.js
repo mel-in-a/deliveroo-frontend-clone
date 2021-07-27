@@ -62,11 +62,11 @@ function App() {
               {/* categories.name.meals */}
               {/* meals : id, title, description, price, picture, popular */}
               {data.categories.map((categories) => {
-                return (
+                return categories.meals.length > 0 && (
                   <>
                     <h2 className="my-4">{categories.name}</h2>
                     {/* cacher les catégories qui n'ont pas de meal */}
-                    {console.log(categories.meals)}
+                 
                     <div className="row">
                       {categories.meals.map((meal) => {
                         return (
@@ -104,7 +104,7 @@ function App() {
 
             <div className="container30">
               <div className="cart br-10 mt-5 p-2">
-                <button className="btn-cart br-10">Valider mon panier</button>
+                <button className="btn-cart br-10 hvr-glow">Valider mon panier</button>
                 <div className="cart-container mt-3 p-3">
                   <div>
                     <button>-</button> 2 <button>+</button> repas à 27€
