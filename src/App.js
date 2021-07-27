@@ -14,9 +14,11 @@ library.add(faSpaceShuttle);
 function App() {
   const [data, setData] = useState(null); //données de l'api
   const [cart, setCart] = useState([]); // éléments dans le panier
+  const [subTotal, setSubTotal] = useState(0); // sous total du panier
+  const [total, setTotal] = useState(0); // total du panier
   const [isLoading, setIsLoading] = useState(true);
-
-
+  // console.log(cart);
+console.log("subtotal:" + subTotal);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -63,75 +65,81 @@ function App() {
               {/* categories.name.meals */}
               {/* meals : id, title, description, price, picture, popular */}
               {data.categories.map((categories) => {
-                return categories.meals.length > 0 && (
-                  <>
-                    <h2 className="my-4">{categories.name}</h2>
-                    {/* cacher les catégories qui n'ont pas de meal */}
-                 
-                    <div className="row">
-                      {categories.meals.map((meal) => {
-                        return (
-                          <div
-                            className="card br-10 p-3 hvr-shadow-radial"
-                            key={meal.id}
-                            onClick={() => {
-                              const newCart = [...cart];
-                              newCart.push([meal.id, meal.title, meal.price]);
-                              setCart(newCart);
-                              console.log(cart);
-                            }
-                            }
-                          >
-                            <div className="card-left p-2">
-                              <div className="title ">{meal.title}</div>
-                              <div className="description ">
-                                {meal.description
-                                  ? meal.description.slice(0, 90) + " ..."
-                                  : ""}
+                return (
+                  categories.meals.length > 0 && (
+                    <>
+                      <h2 className="my-4">{categories.name}</h2>
+                      {/* cacher les catégories qui n'ont pas de meal */}
+
+                      <div className="row">
+                        {categories.meals.map((meal) => {
+                          return (
+                            <div
+                              className="card br-10 p-3 hvr-shadow-radial"
+                              key={meal.id}
+                              onClick={() => {
+                                const newCart = [...cart];
+                                newCart.push([meal.id, meal.title, meal.price]);
+                                setSubTotal(subTotal + Number(meal.price));
+                                // console.log("typ of subtotal:" + typeof subTotal);
+                                setCart(newCart);
+                              }}
+                            >
+                              <div className="card-left p-2">
+                                <div className="title ">{meal.title}</div>
+                                <div className="description ">
+                                  {meal.description
+                                    ? meal.description.slice(0, 90) + " ..."
+                                    : ""}
+                                </div>
+                                <div className="price ">
+                                  {meal.price} €{" "}
+                                  <span>{meal.popular ?? "★ Populaire"}</span>
+                                </div>
                               </div>
-                              <div className="price ">
-                                {meal.price} €{" "}
-                                <span>{meal.popular ?? "★ Populaire"}</span>
+                              <div className="card-right p-1">
+                                {meal.picture ? (
+                                  <img src={meal.picture} alt="" />
+                                ) : (
+                                  ""
+                                )}
                               </div>
                             </div>
-                            <div className="card-right p-1">
-                              {meal.picture ? (
-                                <img src={meal.picture} alt="" />
-                              ) : (
-                                ""
-                              )}
-                            </div>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  </>
+                          );
+                        })}
+                      </div>
+                    </>
+                  )
                 );
               })}
             </div>
 
             <div className="container30">
               <div className="cart br-10 mt-5 p-2">
-                <button className="btn-cart br-10 hvr-glow">Valider mon panier</button>
+                <button className="btn-cart br-10 hvr-glow">
+                  Valider mon panier
+                </button>
                 <div className="cart-container mt-3 p-3">
-                  <div>
-                    {cart.map((item, index) => { 
-                      <div>  {item.index} {item.price}</div>
-                    
+                  {/* <div> */}
+                  
+                    {cart.map((item, index) => {
+                      return (
+                        <div className="cart-item" key={index}>
+                      
+                           <button>-</button>
+                           <span> 1 </span>
+                           <button>+</button>
+                          {" "}
+                          {item[1]} {item[2]} 
+                        </div>
+                      );
                     })}
-                    <button>-</button> 2 <button>+</button> repas à 27€
-                  </div>
-                  <div>
-                    <button>-</button> 2 <button>+</button> repas à 27€
-                  </div>
-                  <div>
-                    <button>-</button> 2 <button>+</button> repas à 27€
-                  </div>
+              
 
                   <div className="hr my-2" />
                   <div className="sub-total">
-                <div className=""> Sous total</div>
-                   <div className="price">27€</div>
+                    <div className=""> Sous total</div>
+                    <div className="price">{subTotal ? subTotal + "€" : ''}</div>
                   </div>
                   <div className="hr my-2" />
                   <div className="delivery-amount">

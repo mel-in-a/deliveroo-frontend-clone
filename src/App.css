@@ -135,6 +135,9 @@ background-color: white;
   justify-content: space-between;
 }
 
+.cart-container .cart-item {
+  font-size: 0.8rem;
+}
 .cart-container .delivery-amount {
   font-size: 1rem;
 
