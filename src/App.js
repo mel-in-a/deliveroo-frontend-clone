@@ -18,8 +18,6 @@ function App() {
   const [total, setTotal] = useState(0); // total du panier
   const [deliveryPrice, setDeliveryPrice] = useState(2.5); // prix de livraison
   const [isLoading, setIsLoading] = useState(true);
-  // console.log(cart);
-  console.log("subtotal:" + subTotal);
 
   useEffect(() => {
     // permet d'executer une seule fois le code au démarrage de l'app
@@ -46,25 +44,34 @@ function App() {
     const newCart = [...cart];
     const mealExists = newCart.find((item) => item.id === meal.id);
     if (mealExists) {
- 
-      // const qty = mealExists.quantity += 1;
- 
-   
+    
+      mealExists.quantity++;
+      setSubTotal(subTotal + Number(meal.price));
+      setCart(newCart);
     } else {
       newCart.push({ ...meal, quantity: 1 });
       setSubTotal(subTotal + Number(meal.price));
-      // console.log("typ of subtotal:" + typeof subTotal);
       setCart(newCart);
     }
   };
 
-  // const removeMeal {
-  //   const newCart = [...cart];
-  //   newCart.push( { ...meal, quantity: 1 });
-  //   setSubTotal(subTotal + Number(meal.price));
-  //   // console.log("typ of subtotal:" + typeof subTotal);
-  //   setCart(newCart);
-  // }
+  const removeMeal = (meal) => {
+    //  check if key exists use find function
+
+    const newCart = [...cart];
+    const mealExists = newCart.find((item) => item.id === meal.id);
+    if (mealExists) {
+ 
+      mealExists.quantity--;
+      setSubTotal(subTotal - Number(meal.price));
+      setCart(newCart);
+    }
+    // else {
+    //   newCart.push({ ...meal, quantity: 1 });
+    //   setSubTotal(subTotal + Number(meal.price));
+    //   setCart(newCart);
+    // }
+  };
 
   return (
     <div>
@@ -144,17 +151,23 @@ function App() {
                 <button className="btn-cart br-10 hvr-glow">
                   Valider mon panier
                 </button>
-                <div className="cart-container mt-3 p-3">
+                <div className="cart-container mt-3 p-2">
                   {/* <div> */}
 
                   {cart.map((item, index) => {
                     return (
                       <div className="cart-item" key={index}>
-                        {/* onClick update the quantity on the subtotal items */}
-                        <button>-</button>
-                        <span> {item.quantity} </span>
-                        <button onClick={() => addMeal(item.id)}>+</button>{" "}
-                        {item.title} {item.price}
+                        {item.quantity > 0 && ( // si la quantité est supérieur à 0
+                          <>
+                            <button onClick={() => removeMeal(item)}>-</button>
+                            <span> {item.quantity} </span>
+                            <button onClick={() => addMeal(item)}>
+                              +
+                            </button>{" "}
+                            {item.title}{" "}
+                            {(item.price * item.quantity).toPrecision(4)} €
+                          </>
+                        )}
                       </div>
                     );
                   })}
@@ -163,7 +176,7 @@ function App() {
                   <div className="sub-total">
                     <div className=""> Sous total</div>
                     <div className="price">
-                      {subTotal ? subTotal + "€" : ""}
+                      {subTotal ? subTotal.toPrecision(4) + "€" : ""}
                     </div>
                   </div>
                   <div className="hr my-2" />
@@ -175,7 +188,9 @@ function App() {
                   <div className="hr my-2" />
                   <div className="total">
                     <div className="">Total </div>
-                    <div className="">{subTotal + deliveryPrice} € </div>
+                    <div className="">
+                      {(subTotal + deliveryPrice).toPrecision(4)} €{" "}
+                    </div>
                   </div>
                 </div>
               </div>

@@ -26,9 +26,8 @@
 }
 
 .hr {
-border-bottom: 1px var(--color-light-grey) solid !important;
-  }
-
+  border-bottom: 1px var(--color-light-grey) solid !important;
+}
 
 body {
   position: relative;
@@ -95,7 +94,6 @@ h2 {
 }
 
 .container30 .cart {
-
   background-color: white;
 }
 
@@ -108,20 +106,18 @@ h2 {
   font-size: 1.2rem;
   padding: 10px;
   cursor: pointer;
-
 }
 
 .cart-container {
   display: flex;
   flex-direction: column;
-  gap: 10px;  
-
+  gap: 10px;
 }
 
 .cart-container button {
   padding: 0 5px;
   border-radius: 50%;
-background-color: white;
+  background-color: white;
   border: var(--color-green) 2px solid;
   color: var(--color-green);
   font-weight: bold;
