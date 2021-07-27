@@ -15,8 +15,7 @@ function App() {
   const [data, setData] = useState(null); //données de l'api
   const [cart, setCart] = useState([]); // éléments dans le panier
   const [subTotal, setSubTotal] = useState(0); // sous total du panier
-  const [total, setTotal] = useState(0); // total du panier
-  const [deliveryPrice, setDeliveryPrice] = useState(2.5); // prix de livraison
+  const [deliveryPrice, setDeliveryPrice] = useState(null); // prix de livraison
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -27,6 +26,7 @@ function App() {
           "https://deliveroo-clone-mm.herokuapp.com/"
         );
         setData(response.data);
+        setDeliveryPrice(2.5);
         setIsLoading(false);
       } catch (error) {
         console.log(error.message);
@@ -71,6 +71,16 @@ function App() {
     // }
   };
 
+  // const delivery = (subTotal) => {
+  //   if (subTotal > 50) {
+  //     console.log(subTotal);
+  //     setDeliveryPrice(0);
+  //     return 'Offert';
+  //   }
+  //   else {
+  //     return deliveryPrice;
+  //   }
+  // }
   return (
     <div>
       <Header />
@@ -146,9 +156,7 @@ function App() {
 
             <div className="container30">
               <div className="cart br-10 mt-5 p-2">
-                <button className="btn-cart br-10 hvr-glow ">
-                  Valider mon panier
-                </button>
+           
                 <div className="cart-container mt-3 p-2">
                   {/* <div> */}
 
@@ -171,9 +179,10 @@ function App() {
                       </div>
                     );
                   })}
-
-                  <div className="hr my-2" />
-                  <div className="sub-total">
+                  
+                  {subTotal > 0 && (
+                    <>
+                  <div className="sub-total mt-4">
                     <div className=""> Sous total</div>
                     <div className="price">
                       {subTotal ? subTotal.toFixed(2) + "€" : ""}
@@ -182,7 +191,9 @@ function App() {
                   <div className="hr my-2" />
                   <div className="delivery-amount">
                     <div className=""> Frais de livraison</div>
-                    <div className="delivery-price">2.50€ </div>
+                    {/* <div className="delivery-price">{delivery(subTotal)} €</div> */}
+                    {/* TODO adapter le prix delivery en fonction du sous total */}
+                    <div className="delivery-price">{subTotal > 50 ? "Offerts" : deliveryPrice + '€'} </div>
                   </div>
 
                   <div className="hr my-2" />
@@ -192,7 +203,13 @@ function App() {
                       {(subTotal + deliveryPrice).toFixed(2)} €{" "}
                     </div>
                   </div>
+                  </>
+                  )} 
                 </div>
+               
+                <button className="btn-cart br-10 hvr-glow mt-4">
+                  Valider mon panier
+                </button>
               </div>
             </div>
           </div>

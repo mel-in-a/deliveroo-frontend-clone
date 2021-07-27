@@ -207,11 +207,9 @@ h2 {
 .card {
   display: flex;
   height: 150px;
-  
-  min-width: 350px;
+  min-width: 340px;
   flex: 1;
   flex-grow: 1;
-
   background-color: white;
   justify-content: space-between;
   /* max-width: 100%; */
@@ -221,14 +219,14 @@ h2 {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  /* /* flex: 1; */
+  
   height: 100%;
 }
 
 .card-right {
-  /* flex: 1; */
+
   flex-shrink: 0;
-  /* background-color: yellow; */
+
   background-size: contain;
   background-position: center;
 }
