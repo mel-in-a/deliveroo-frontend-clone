@@ -139,7 +139,7 @@ console.log("subtotal:" + subTotal);
                   <div className="hr my-2" />
                   <div className="sub-total">
                     <div className=""> Sous total</div>
-                    <div className="price">{subTotal ? subTotal + "€" : ''}</div>
+                    <div className="price">{subTotal ? subTotal.toPrecision(4) + "€" : ''}</div>
                   </div>
                   <div className="hr my-2" />
                   <div className="delivery-amount">
