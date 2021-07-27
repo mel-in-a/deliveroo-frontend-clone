@@ -191,9 +191,9 @@ function App() {
                   <div className="hr my-2" />
                   <div className="delivery-amount">
                     <div className=""> Frais de livraison</div>
-                    {/* <div className="delivery-price">{delivery(subTotal)} €</div> */}
+                    <div className="delivery-price">{deliveryPrice} €</div>
                     {/* TODO adapter le prix delivery en fonction du sous total */}
-                    <div className="delivery-price">{subTotal > 50 ? "Offerts" : deliveryPrice + '€'} </div>
+                    {/* <div className="delivery-price">{subTotal > 50 ? "Offerts" : deliveryPrice + '€'} </div> */}
                   </div>
 
                   <div className="hr my-2" />
