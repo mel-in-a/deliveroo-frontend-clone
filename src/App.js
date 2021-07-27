@@ -12,9 +12,10 @@ import { faSpaceShuttle } from "@fortawesome/free-solid-svg-icons";
 library.add(faSpaceShuttle);
 
 function App() {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState(null); //données de l'api
+  const [cart, setCart] = useState([]); // éléments dans le panier
   const [isLoading, setIsLoading] = useState(true);
-  // const [cart, setCart] = useState([]);
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -73,6 +74,13 @@ function App() {
                           <div
                             className="card br-10 p-3 hvr-shadow-radial"
                             key={meal.id}
+                            onClick={() => {
+                              const newCart = [...cart];
+                              newCart.push([meal.id, meal.title, meal.price]);
+                              setCart(newCart);
+                              console.log(cart);
+                            }
+                            }
                           >
                             <div className="card-left p-2">
                               <div className="title ">{meal.title}</div>
@@ -107,6 +115,10 @@ function App() {
                 <button className="btn-cart br-10 hvr-glow">Valider mon panier</button>
                 <div className="cart-container mt-3 p-3">
                   <div>
+                    {cart.map((item, index) => { 
+                      <div>  {item.index} {item.price}</div>
+                    
+                    })}
                     <button>-</button> 2 <button>+</button> repas à 27€
                   </div>
                   <div>
