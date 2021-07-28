@@ -37,6 +37,7 @@ body {
   position: relative;
   min-height: 100vh;
   background-color: var(--color-light-grey);
+  padding-bottom: 60px;
 }
 .container {
   max-width: 1280px;
@@ -273,7 +274,7 @@ h2 {
   font-size: 12px;
 }
 
-@media (max-width: 1210px) {
+@media (min-width: 611px) and (max-width: 1210px) {
   .sub-header {
     flex-direction: column;
   }
@@ -287,6 +288,11 @@ h2 {
   }
 }
 
-@media (max-width: 720px){
-
+@media (max-width: 610px){
+.container30 {
+  display: none;
+}
+.sub-header {
+  padding:20px;
+}
 }
