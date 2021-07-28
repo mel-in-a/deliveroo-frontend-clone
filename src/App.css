@@ -293,6 +293,9 @@ h2 {
   display: none;
 }
 .sub-header {
-  padding:20px;
+  flex-direction: column;
+}
+.sub-header .left {
+  padding: 20px;
 }
 }
