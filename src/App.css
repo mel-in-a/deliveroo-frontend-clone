@@ -207,9 +207,10 @@ h2 {
 .card {
   display: flex;
   height: 150px;
-  min-width: 340px;
+  min-width: 370px;
   flex: 1;
   flex-grow: 1;
+  flex-shrink: 1;
   background-color: white;
   justify-content: space-between;
   /* max-width: 100%; */
@@ -272,7 +273,7 @@ h2 {
   font-size: 12px;
 }
 
-@media (max-width: 960px) {
+@media (max-width: 1210px) {
   .sub-header {
     flex-direction: column;
   }
@@ -282,5 +283,10 @@ h2 {
 
   .card {
     flex-grow: 1;
+    min-width: 300px;
   }
+}
+
+@media (max-width: 720px){
+
 }
