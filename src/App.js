@@ -64,11 +64,6 @@ function App() {
       setSubTotal(subTotal - Number(meal.price));
       setCart(newCart);
     }
-    // else {
-    //   newCart.push({ ...meal, quantity: 1 });
-    //   setSubTotal(subTotal + Number(meal.price));
-    //   setCart(newCart);
-    // }
   };
 
   // const delivery = (subTotal) => {
@@ -156,15 +151,15 @@ function App() {
 
             <div className="container30">
               <div className="cart br-10 mt-5 p-2">
-           
                 <div className="cart-container mt-3 p-2">
                   {/* <div> */}
-
+                
                   {cart.map((item, index) => {
                     return (
-                      <div className="cart-item" key={index}>
-                        {item.quantity > 0 && ( // si la quantité est supérieur à 0
-                          <>
+                      <>
+                        {item.quantity > 0 && (
+                         
+                          <div className="cart-item" key={index}>
                             <button onClick={() => removeMeal(item)}>-</button>
                             <span> {item.quantity} </span>
                             <button onClick={() => addMeal(item)}>
@@ -174,39 +169,40 @@ function App() {
                             <div className="ml-2 bold sub-total-meal">
                               {(item.price * item.quantity).toFixed(2)} €
                             </div>
-                          </>
+                            </div>
+                        
                         )}
-                      </div>
+                      </>
                     );
                   })}
-                  
+
                   {subTotal > 0 && (
                     <>
-                  <div className="sub-total mt-4">
-                    <div className=""> Sous total</div>
-                    <div className="price">
-                      {subTotal ? subTotal.toFixed(2) + "€" : ""}
-                    </div>
-                  </div>
-                  <div className="hr my-2" />
-                  <div className="delivery-amount">
-                    <div className=""> Frais de livraison</div>
-                    <div className="delivery-price">{deliveryPrice} €</div>
-                    {/* TODO adapter le prix delivery en fonction du sous total */}
-                    {/* <div className="delivery-price">{subTotal > 50 ? "Offerts" : deliveryPrice + '€'} </div> */}
-                  </div>
+                      <div className="sub-total mt-4">
+                        <div className=""> Sous total</div>
+                        <div className="price">
+                          {subTotal ? subTotal.toFixed(2) + "€" : ""}
+                        </div>
+                      </div>
+                      <div className="hr my-2" />
+                      <div className="delivery-amount">
+                        <div className=""> Frais de livraison</div>
+                        <div className="delivery-price">{deliveryPrice} €</div>
+                        {/* TODO adapter le prix delivery en fonction du sous total */}
+                        {/* <div className="delivery-price">{subTotal > 50 ? "Offerts" : deliveryPrice + '€'} </div> */}
+                      </div>
 
-                  <div className="hr my-2" />
-                  <div className="total">
-                    <div className="">Total </div>
-                    <div className="">
-                      {(subTotal + deliveryPrice).toFixed(2)} €{" "}
-                    </div>
-                  </div>
-                  </>
-                  )} 
+                      <div className="hr my-2" />
+                      <div className="total">
+                        <div className="">Total </div>
+                        <div className="">
+                          {(subTotal + deliveryPrice).toFixed(2)} €{" "}
+                        </div>
+                      </div>
+                    </>
+                  )}
                 </div>
-               
+
                 <button className="btn-cart br-10 hvr-glow mt-4">
                   Valider mon panier
                 </button>
