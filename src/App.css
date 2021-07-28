@@ -298,4 +298,9 @@ h2 {
 .sub-header .left {
   padding: 20px;
 }
+
+.card {
+  flex-grow: 1;
+  /* min-width: 280px; */
+}
 }
